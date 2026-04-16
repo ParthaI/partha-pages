@@ -5,122 +5,277 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Partha Sarathi Behera - Senior Software Engineer</title>
 <meta name="description" content="Senior Software Engineer with 9+ years of experience in Golang, cloud governance, and open-source developer tooling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --blue: #3b7dd8;
-    --blue-light: #e8f0fe;
-    --blue-dark: #2a5fa8;
-    --text: #1a1a1a;
-    --text-secondary: #555;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --accent-dark: #1d4ed8;
+    --text: #0f172a;
+    --text-muted: #64748b;
     --bg: #ffffff;
-    --bg-alt: #f8f9fb;
+    --bg-alt: #f8fafc;
     --border: #e2e8f0;
+    --gradient-start: #0f172a;
+    --gradient-end: #1e293b;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html { scroll-behavior: smooth; }
+
   body {
-    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: var(--text);
-    background: var(--bg-alt);
+    background: var(--bg);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
 
-  a { color: var(--blue); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+  a:hover { color: var(--accent-dark); }
 
-  /* Hero */
-  .hero {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  /* === NAV === */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo {
+    font-weight: 700;
+    font-size: 1rem;
     color: #fff;
-    padding: 80px 20px 60px;
-    text-align: center;
+    letter-spacing: -0.3px;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    letter-spacing: 0.2px;
+  }
+  .nav-links a:hover { color: #fff; }
+
+  /* === HERO === */
+  .hero {
+    background: linear-gradient(160deg, var(--gradient-start) 0%, #162033 40%, #1a2744 70%, var(--gradient-end) 100%);
+    color: #fff;
+    padding: 140px 32px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #60a5fa;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
   }
   .hero h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -1.5px;
   }
   .hero .tagline {
-    font-size: 1.2rem;
-    color: #93b5e8;
+    font-size: 1.15rem;
+    color: #94a3b8;
     font-weight: 400;
-    margin-bottom: 24px;
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 36px;
   }
-  .hero-links {
+  .hero-actions {
     display: flex;
-    gap: 16px;
-    justify-content: center;
+    gap: 12px;
     flex-wrap: wrap;
   }
-  .hero-links a {
-    color: #fff;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.25);
-    padding: 8px 20px;
-    border-radius: 6px;
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
     font-size: 0.9rem;
-    transition: background 0.2s;
+    font-weight: 600;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
   }
-  .hero-links a:hover {
-    background: rgba(255,255,255,0.2);
-    text-decoration: none;
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
   }
+  .btn-primary:hover { background: var(--accent-dark); color: #fff; }
+  .btn-outline {
+    background: transparent;
+    color: #cbd5e1;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.35); color: #fff; }
+  .btn svg { width: 18px; height: 18px; }
 
-  /* Container */
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  /* Section */
-  .section {
+  /* === STATS BAR === */
+  .stats-bar {
     background: var(--bg);
-    border-radius: 10px;
-    padding: 36px 40px;
-    margin-top: -30px;
-    margin-bottom: 24px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
   }
-  .section:first-child {
-    margin-top: -30px;
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
   }
-  .section + .section {
-    margin-top: 0;
+  .stat {
+    text-align: center;
+    padding: 32px 16px;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* === SECTIONS === */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  section {
+    padding: 80px 0;
+  }
+  section + section {
+    border-top: 1px solid var(--border);
+  }
+  .section-header {
+    margin-bottom: 48px;
+  }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 8px;
   }
   .section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    color: var(--text);
+  }
+
+  /* === ABOUT === */
+  .about-text {
     font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--blue);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--blue);
-    margin-bottom: 20px;
+    line-height: 1.9;
+    color: var(--text-muted);
+    max-width: 780px;
   }
+  .about-text strong { color: var(--text); font-weight: 600; }
 
-  /* About */
-  .about p {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    line-height: 1.8;
-  }
-
-  /* Skills */
+  /* === SKILLS === */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
-  .skill-group h3 {
-    font-size: 0.85rem;
+  .skill-card {
+    padding: 28px;
+    background: var(--bg-alt);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: all 0.25s;
+  }
+  .skill-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
+    transform: translateY(-2px);
+  }
+  .skill-card h3 {
+    font-size: 0.8rem;
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 8px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .skill-card h3 .icon {
+    width: 20px;
+    height: 20px;
+    background: var(--accent-light);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .skill-card h3 .icon svg {
+    width: 12px;
+    height: 12px;
+    color: var(--accent);
   }
   .skill-tags {
     display: flex;
@@ -128,130 +283,321 @@
     gap: 6px;
   }
   .skill-tag {
-    background: var(--blue-light);
-    color: var(--blue-dark);
+    background: var(--bg);
+    color: var(--text-muted);
     font-size: 0.8rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 4px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .skill-card:hover .skill-tag {
+    border-color: var(--accent-light);
+    color: var(--text);
   }
 
-  /* Experience */
-  .job {
-    margin-bottom: 28px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid var(--border);
-  }
-  .job:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-  .job-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-bottom: 4px;
-  }
-  .job-title {
-    font-size: 1.05rem;
-    font-weight: 700;
-  }
-  .job-period {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-  }
-  .job-company {
-    font-size: 0.9rem;
-    color: var(--blue);
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  .job ul {
-    padding-left: 20px;
-  }
-  .job li {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 6px;
-    line-height: 1.6;
-  }
-
-  /* Projects */
+  /* === PROJECTS === */
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
   .project-card {
     border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px;
-    transition: box-shadow 0.2s;
+    border-radius: 12px;
+    padding: 28px;
+    transition: all 0.25s;
+    background: var(--bg);
+    position: relative;
   }
   .project-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-color: var(--accent);
+    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
+    transform: translateY(-3px);
+  }
+  .project-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
   }
   .project-card h3 {
-    font-size: 1rem;
-    margin-bottom: 4px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
   }
-  .project-card .stars {
-    font-size: 0.8rem;
-    color: var(--blue);
-    font-weight: 600;
-    margin-bottom: 8px;
+  .project-card h3 a { color: var(--text); }
+  .project-card h3 a:hover { color: var(--accent); }
+  .project-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .badge-stars {
+    background: #fef3c7;
+    color: #92400e;
+  }
+  .badge-role {
+    background: var(--accent-light);
+    color: var(--accent-dark);
   }
   .project-card p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
   }
-  .project-card .tech {
-    margin-top: 10px;
+  .project-tech {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 6px;
   }
-  .project-card .tech span {
+  .project-tech span {
     font-size: 0.75rem;
+    font-weight: 500;
     background: var(--bg-alt);
-    color: var(--text-secondary);
-    padding: 2px 8px;
-    border-radius: 3px;
+    color: var(--text-muted);
+    padding: 3px 10px;
+    border-radius: 4px;
   }
 
-  /* Footer */
+  /* === EXPERIENCE === */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--border) 100%);
+    border-radius: 2px;
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 48px;
+  }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -37px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    background: var(--bg);
+    border: 3px solid var(--accent);
+    border-radius: 50%;
+  }
+  .timeline-item:not(:first-child)::before {
+    border-color: var(--border);
+  }
+  .timeline-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .timeline-role {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+  .timeline-period {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-alt);
+    padding: 3px 12px;
+    border-radius: 20px;
+  }
+  .timeline-company {
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .timeline-item ul {
+    padding-left: 20px;
+    list-style: none;
+  }
+  .timeline-item li {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    line-height: 1.7;
+    position: relative;
+    padding-left: 4px;
+  }
+  .timeline-item li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 10px;
+    width: 5px;
+    height: 5px;
+    background: var(--border);
+    border-radius: 50%;
+  }
+
+  /* === CONTACT === */
+  .contact-section {
+    background: var(--gradient-start);
+    color: #fff;
+    padding: 80px 0;
+  }
+  .contact-section .section-label { color: #60a5fa; }
+  .contact-section .section-title { color: #fff; }
+  .contact-grid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 20px 28px;
+    transition: all 0.25s;
+    flex: 1;
+    min-width: 220px;
+  }
+  .contact-card:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+  .contact-card svg {
+    width: 22px;
+    height: 22px;
+    color: #60a5fa;
+    flex-shrink: 0;
+  }
+  .contact-card-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact-card-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .contact-card-value {
+    font-size: 0.9rem;
+    color: #e2e8f0;
+    font-weight: 500;
+  }
+  .contact-card a { color: #e2e8f0; }
+  .contact-card a:hover { color: #fff; }
+
+  /* === FOOTER === */
   footer {
+    background: #0a0f1e;
     text-align: center;
-    padding: 40px 20px;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
+    padding: 28px 32px;
+    font-size: 0.8rem;
+    color: #475569;
+    border-top: 1px solid rgba(255,255,255,0.05);
   }
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    .hero { padding: 60px 20px 40px; }
-    .hero h1 { font-size: 1.8rem; }
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    .hero { padding: 110px 20px 60px; }
+    .hero h1 { font-size: 2.2rem; }
     .hero .tagline { font-size: 1rem; }
-    .section { padding: 24px 20px; }
-    .job-header { flex-direction: column; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .stat { border-bottom: 1px solid var(--border); }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    section { padding: 56px 0; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 0.78rem; }
+    .contact-grid { flex-direction: column; }
+  }
+  @media (max-width: 480px) {
+    .hero { padding: 100px 16px 48px; }
+    .hero h1 { font-size: 1.8rem; letter-spacing: -1px; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .skills-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 16px; }
+    .nav-inner { padding: 0 16px; }
+    .timeline-header { flex-direction: column; gap: 4px; }
+    .hero-actions { flex-direction: column; }
+    .btn { justify-content: center; }
   }
 </style>
 </head>
 <body>
 
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">PSB</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
 <!-- Hero -->
 <div class="hero">
-  <div class="container">
-    <h1>Partha Sarathi Behera</h1>
-    <div class="tagline">Senior Software Engineer &middot; Golang &middot; Cloud Governance</div>
-    <div class="hero-links">
-      <a href="https://github.com/ParthaI" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/partha-sarathi-behera-55a5a2181" target="_blank">LinkedIn</a>
-      <a href="mailto:parthasarathibehera.pb@gmail.com">Email</a>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Senior Software Engineer</div>
+    <h1>Partha Sarathi<br>Behera</h1>
+    <div class="tagline">Building cloud governance platforms and open-source developer tooling in Go. Core contributor to Steampipe &mdash; powering real-time cloud security at scale.</div>
+    <div class="hero-actions">
+      <a href="https://github.com/ParthaI" target="_blank" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a href="https://linkedin.com/in/partha-sarathi-behera-55a5a2181" target="_blank" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:parthasarathibehera.pb@gmail.com" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-number">9+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">150+</div>
+      <div class="stat-label">Plugins Built</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">2,000+</div>
+      <div class="stat-label">Cloud Tables</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">7,700+</div>
+      <div class="stat-label">GitHub Stars</div>
     </div>
   </div>
 </div>
@@ -259,25 +605,34 @@
 <div class="container">
 
 <!-- About -->
-<div class="section about">
-  <div class="section-title">About</div>
-  <p>
+<section id="about">
+  <div class="section-header">
+    <div class="section-label">Introduction</div>
+    <div class="section-title">About Me</div>
+  </div>
+  <div class="about-text">
     Senior Software Engineer with <strong>9+ years of experience</strong> building high-scalability
     Golang-based SaaS platforms and cloud-native developer tooling. Core contributor to the
-    <strong>Steampipe open-source ecosystem</strong> (7,700+ GitHub stars) &mdash; powering 150+ plugins
-    and 2,000+ cloud resource tables. Deep expertise in Go, gRPC, PostgreSQL, and multi-cloud
-    API design. Recently building AI-powered governance features including MCP servers and
-    proactive guardrails. Passionate about open-source infrastructure and developer tools for
-    cloud security at scale.
-  </p>
-</div>
+    <strong>Steampipe open-source ecosystem</strong> &mdash; a zero-ETL platform that lets you query
+    live cloud APIs using SQL. I designed the plugin architecture powering 150+ plugins and 2,000+
+    cloud resource tables. Deep expertise in <strong>Go, gRPC, PostgreSQL</strong>, and multi-cloud
+    API design across AWS, Azure, and GCP. Recently building <strong>AI-powered governance features</strong>
+    including MCP servers and proactive guardrails.
+  </div>
+</section>
 
 <!-- Skills -->
-<div class="section">
-  <div class="section-title">Technical Skills</div>
+<section id="skills">
+  <div class="section-header">
+    <div class="section-label">Expertise</div>
+    <div class="section-title">Technical Skills</div>
+  </div>
   <div class="skills-grid">
-    <div class="skill-group">
-      <h3>Languages</h3>
+    <div class="skill-card">
+      <h3>
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+        Languages
+      </h3>
       <div class="skill-tags">
         <span class="skill-tag">Go</span>
         <span class="skill-tag">TypeScript</span>
@@ -288,8 +643,11 @@
         <span class="skill-tag">Bash</span>
       </div>
     </div>
-    <div class="skill-group">
-      <h3>Backend & APIs</h3>
+    <div class="skill-card">
+      <h3>
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></span>
+        Backend & APIs
+      </h3>
       <div class="skill-tags">
         <span class="skill-tag">gRPC</span>
         <span class="skill-tag">REST</span>
@@ -298,8 +656,23 @@
         <span class="skill-tag">MCP Servers</span>
       </div>
     </div>
-    <div class="skill-group">
-      <h3>Cloud & Infra</h3>
+    <div class="skill-card">
+      <h3>
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+        Databases
+      </h3>
+      <div class="skill-tags">
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">DuckDB</span>
+        <span class="skill-tag">SQLite</span>
+        <span class="skill-tag">Postgres FDW</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h3>
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+        Cloud & Infra
+      </h3>
       <div class="skill-tags">
         <span class="skill-tag">AWS</span>
         <span class="skill-tag">Azure</span>
@@ -309,17 +682,11 @@
         <span class="skill-tag">Terraform</span>
       </div>
     </div>
-    <div class="skill-group">
-      <h3>Databases</h3>
-      <div class="skill-tags">
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">DuckDB</span>
-        <span class="skill-tag">SQLite</span>
-        <span class="skill-tag">Postgres FDW</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <h3>DevOps & Testing</h3>
+    <div class="skill-card">
+      <h3>
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+        DevOps & Testing
+      </h3>
       <div class="skill-tags">
         <span class="skill-tag">GitHub Actions</span>
         <span class="skill-tag">CI/CD</span>
@@ -327,8 +694,11 @@
         <span class="skill-tag">Nix</span>
       </div>
     </div>
-    <div class="skill-group">
-      <h3>AI & Tooling</h3>
+    <div class="skill-card">
+      <h3>
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a4 4 0 0 0-4 4c0 2.8 2.2 4.4 3.2 6.2.6 1 .8 2 .8 2.8h0c0-.8.2-1.8.8-2.8C13.8 10.4 16 8.8 16 6a4 4 0 0 0-4-4z"/><path d="M12 15v7"/><path d="M8 22h8"/></svg></span>
+        AI & Tooling
+      </h3>
       <div class="skill-tags">
         <span class="skill-tag">MCP</span>
         <span class="skill-tag">AI SDKs</span>
@@ -337,105 +707,153 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Open Source Projects -->
-<div class="section">
-  <div class="section-title">Open Source Projects</div>
+<!-- Projects -->
+<section id="projects">
+  <div class="section-header">
+    <div class="section-label">Open Source</div>
+    <div class="section-title">Projects</div>
+  </div>
   <div class="projects-grid">
     <div class="project-card">
-      <h3><a href="https://github.com/turbot/steampipe" target="_blank">Steampipe</a></h3>
-      <div class="stars">7,700+ stars</div>
+      <div class="project-card-header">
+        <h3><a href="https://github.com/turbot/steampipe" target="_blank">Steampipe</a></h3>
+        <span class="project-badge badge-stars">7,700+ stars</span>
+      </div>
       <p>Zero-ETL platform to query live cloud APIs using SQL. Built on embedded PostgreSQL with custom Foreign Data Wrappers and gRPC-based plugin architecture.</p>
-      <div class="tech">
-        <span>Go</span>
-        <span>gRPC</span>
-        <span>PostgreSQL</span>
-        <span>FDW</span>
+      <div class="project-tech">
+        <span>Go</span><span>gRPC</span><span>PostgreSQL</span><span>FDW</span>
       </div>
     </div>
     <div class="project-card">
-      <h3><a href="https://github.com/turbot/steampipe-plugin-sdk" target="_blank">Steampipe Plugin SDK</a></h3>
-      <div class="stars">Core Architect</div>
+      <div class="project-card-header">
+        <h3><a href="https://github.com/turbot/steampipe-plugin-sdk" target="_blank">Plugin SDK</a></h3>
+        <span class="project-badge badge-role">Core Architect</span>
+      </div>
       <p>Go SDK enabling 150+ plugins and 2,000+ queryable tables. Handles pagination, rate limiting, caching, and multi-region fan-out.</p>
-      <div class="tech">
-        <span>Go</span>
-        <span>gRPC</span>
-        <span>SDK Design</span>
+      <div class="project-tech">
+        <span>Go</span><span>gRPC</span><span>SDK Design</span>
       </div>
     </div>
     <div class="project-card">
-      <h3><a href="https://github.com/turbot/powerpipe" target="_blank">Powerpipe</a></h3>
-      <div class="stars">Contributor</div>
+      <div class="project-card-header">
+        <h3><a href="https://github.com/turbot/powerpipe" target="_blank">Powerpipe</a></h3>
+        <span class="project-badge badge-role">Contributor</span>
+      </div>
       <p>Cloud Security Posture Management tool. Compliance benchmarks for CIS, NIST, SOC2, and more.</p>
-      <div class="tech">
-        <span>Go</span>
-        <span>CSPM</span>
-        <span>Compliance</span>
+      <div class="project-tech">
+        <span>Go</span><span>CSPM</span><span>Compliance</span>
       </div>
     </div>
     <div class="project-card">
-      <h3><a href="https://github.com/turbot/tailpipe" target="_blank">Tailpipe</a></h3>
-      <div class="stars">Contributor</div>
+      <div class="project-card-header">
+        <h3><a href="https://github.com/turbot/tailpipe" target="_blank">Tailpipe</a></h3>
+        <span class="project-badge badge-role">Contributor</span>
+      </div>
       <p>Cloud log analysis and SIEM tool powered by DuckDB for high-performance security event querying.</p>
-      <div class="tech">
-        <span>Go</span>
-        <span>DuckDB</span>
-        <span>SIEM</span>
+      <div class="project-tech">
+        <span>Go</span><span>DuckDB</span><span>SIEM</span>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- Experience -->
-<div class="section">
-  <div class="section-title">Experience</div>
-
-  <div class="job">
-    <div class="job-header">
-      <span class="job-title">Senior Software Engineer</span>
-      <span class="job-period">2019 &ndash; Present</span>
-    </div>
-    <div class="job-company">Turbot HQ India Pvt. Ltd.</div>
-    <ul>
-      <li>Led backend development in Golang for a multi-tenant cloud governance SaaS platform serving enterprise customers across AWS, Azure, and GCP.</li>
-      <li>Designed the Steampipe plugin architecture (Go SDK + gRPC), enabling 150+ plugins and 2,000+ queryable cloud resource tables.</li>
-      <li>Built Postgres FDW and SQLite extensions; implemented DuckDB and DuckLake data backends for high-performance zero-ETL access.</li>
-      <li>Designed and developed MCP servers enabling secure, real-time LLM access to cloud governance data.</li>
-      <li>Built AI-powered prevention features using TypeScript and AI SDKs, converting policy signals into proactive guardrails.</li>
-      <li>Drove CI/CD pipeline optimization with CGO cross-compilation and automated packaging, reducing deployment cycles by ~35%.</li>
-      <li>Mentored junior and mid-level engineers on Go best practices and system design.</li>
-    </ul>
+<section id="experience">
+  <div class="section-header">
+    <div class="section-label">Career</div>
+    <div class="section-title">Experience</div>
   </div>
+  <div class="timeline">
 
-  <div class="job">
-    <div class="job-header">
-      <span class="job-title">Software Engineer</span>
-      <span class="job-period">2017 &ndash; 2019</span>
+    <div class="timeline-item">
+      <div class="timeline-header">
+        <span class="timeline-role">Senior Software Engineer</span>
+        <span class="timeline-period">2019 &ndash; Present</span>
+      </div>
+      <div class="timeline-company">Turbot HQ India Pvt. Ltd.</div>
+      <ul>
+        <li>Led backend development in Golang for a multi-tenant cloud governance SaaS platform serving enterprise customers across AWS, Azure, and GCP.</li>
+        <li>Designed the Steampipe plugin architecture (Go SDK + gRPC), enabling 150+ plugins and 2,000+ queryable cloud resource tables.</li>
+        <li>Built Postgres FDW and SQLite extensions; implemented DuckDB and DuckLake data backends for high-performance zero-ETL access.</li>
+        <li>Designed and developed MCP servers enabling secure, real-time LLM access to cloud governance data.</li>
+        <li>Built AI-powered prevention features using TypeScript and AI SDKs, converting policy signals into proactive guardrails.</li>
+        <li>Drove CI/CD pipeline optimization with CGO cross-compilation and automated packaging, reducing deployment cycles by ~35%.</li>
+        <li>Mentored junior and mid-level engineers on Go best practices and system design.</li>
+      </ul>
     </div>
-    <div class="job-company">Riaxe Systems Pvt. Ltd.</div>
-    <ul>
-      <li>Developed hybrid mobile application backends and third-party integrations using Node.js.</li>
-      <li>Implemented OAuth 2.0 authentication flows and payment gateway integrations.</li>
-    </ul>
-  </div>
 
-  <div class="job">
-    <div class="job-header">
-      <span class="job-title">Junior Java Developer</span>
-      <span class="job-period">2016 &ndash; 2017</span>
+    <div class="timeline-item">
+      <div class="timeline-header">
+        <span class="timeline-role">Software Engineer</span>
+        <span class="timeline-period">2017 &ndash; 2019</span>
+      </div>
+      <div class="timeline-company">Riaxe Systems Pvt. Ltd.</div>
+      <ul>
+        <li>Developed hybrid mobile application backends and third-party integrations using Node.js.</li>
+        <li>Implemented OAuth 2.0 authentication flows and payment gateway integrations.</li>
+      </ul>
     </div>
-    <div class="job-company">Rainmaker Group</div>
-    <ul>
-      <li>Built an appointment scheduling system using Java and Spring MVC with RESTful APIs.</li>
-    </ul>
+
+    <div class="timeline-item">
+      <div class="timeline-header">
+        <span class="timeline-role">Junior Java Developer</span>
+        <span class="timeline-period">2016 &ndash; 2017</span>
+      </div>
+      <div class="timeline-company">Rainmaker Group</div>
+      <ul>
+        <li>Built an appointment scheduling system using Java and Spring MVC with RESTful APIs.</li>
+      </ul>
+    </div>
+
   </div>
+</section>
+
 </div>
 
+<!-- Contact -->
+<div class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Get In Touch</div>
+      <div class="section-title">Contact</div>
+    </div>
+    <div class="contact-grid">
+      <a href="mailto:parthasarathibehera.pb@gmail.com" class="contact-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <div class="contact-card-text">
+          <span class="contact-card-label">Email</span>
+          <span class="contact-card-value">parthasarathibehera.pb@gmail.com</span>
+        </div>
+      </a>
+      <a href="https://github.com/ParthaI" target="_blank" class="contact-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        <div class="contact-card-text">
+          <span class="contact-card-label">GitHub</span>
+          <span class="contact-card-value">ParthaI</span>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/partha-sarathi-behera-55a5a2181" target="_blank" class="contact-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <div class="contact-card-text">
+          <span class="contact-card-label">LinkedIn</span>
+          <span class="contact-card-value">Partha Sarathi Behera</span>
+        </div>
+      </a>
+      <div class="contact-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="contact-card-text">
+          <span class="contact-card-label">Location</span>
+          <span class="contact-card-value">Odisha, India</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <footer>
-  &copy; 2026 Partha Sarathi Behera &middot; Built with care
+  &copy; 2026 Partha Sarathi Behera
 </footer>
 
 </body>
