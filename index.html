@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partha Sarathi Behera - Senior Software Engineer</title>
+<meta name="description" content="Senior Software Engineer with 9+ years of experience in Golang, cloud governance, and open-source developer tooling.">
+<style>
+  :root {
+    --blue: #3b7dd8;
+    --blue-light: #e8f0fe;
+    --blue-dark: #2a5fa8;
+    --text: #1a1a1a;
+    --text-secondary: #555;
+    --bg: #ffffff;
+    --bg-alt: #f8f9fb;
+    --border: #e2e8f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg-alt);
+    line-height: 1.6;
+  }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    padding: 80px 20px 60px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  .hero .tagline {
+    font-size: 1.2rem;
+    color: #93b5e8;
+    font-weight: 400;
+    margin-bottom: 24px;
+  }
+  .hero-links {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-links a {
+    color: #fff;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+  .hero-links a:hover {
+    background: rgba(255,255,255,0.2);
+    text-decoration: none;
+  }
+
+  /* Container */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Section */
+  .section {
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 36px 40px;
+    margin-top: -30px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .section:first-child {
+    margin-top: -30px;
+  }
+  .section + .section {
+    margin-top: 0;
+  }
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--blue);
+    margin-bottom: 20px;
+  }
+
+  /* About */
+  .about p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  /* Skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+  .skill-group h3 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .skill-tag {
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+
+  /* Experience */
+  .job {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .job:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .job-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+  .job-period {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+  .job-company {
+    font-size: 0.9rem;
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .job ul {
+    padding-left: 20px;
+  }
+  .job li {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+
+  /* Projects */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+  .project-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: box-shadow 0.2s;
+  }
+  .project-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  .project-card h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  .project-card .stars {
+    font-size: 0.8rem;
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .project-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .project-card .tech {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .project-card .tech span {
+    font-size: 0.75rem;
+    background: var(--bg-alt);
+    color: var(--text-secondary);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .hero { padding: 60px 20px 40px; }
+    .hero h1 { font-size: 1.8rem; }
+    .hero .tagline { font-size: 1rem; }
+    .section { padding: 24px 20px; }
+    .job-header { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="container">
+    <h1>Partha Sarathi Behera</h1>
+    <div class="tagline">Senior Software Engineer &middot; Golang &middot; Cloud Governance</div>
+    <div class="hero-links">
+      <a href="https://github.com/ParthaI" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/partha-sarathi-behera-55a5a2181" target="_blank">LinkedIn</a>
+      <a href="mailto:parthasarathibehera.pb@gmail.com">Email</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- About -->
+<div class="section about">
+  <div class="section-title">About</div>
+  <p>
+    Senior Software Engineer with <strong>9+ years of experience</strong> building high-scalability
+    Golang-based SaaS platforms and cloud-native developer tooling. Core contributor to the
+    <strong>Steampipe open-source ecosystem</strong> (7,700+ GitHub stars) &mdash; powering 150+ plugins
+    and 2,000+ cloud resource tables. Deep expertise in Go, gRPC, PostgreSQL, and multi-cloud
+    API design. Recently building AI-powered governance features including MCP servers and
+    proactive guardrails. Passionate about open-source infrastructure and developer tools for
+    cloud security at scale.
+  </p>
+</div>
+
+<!-- Skills -->
+<div class="section">
+  <div class="section-title">Technical Skills</div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h3>Languages</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Go</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Bash</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Backend & APIs</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">gRPC</span>
+        <span class="skill-tag">REST</span>
+        <span class="skill-tag">OpenAPI</span>
+        <span class="skill-tag">Microservices</span>
+        <span class="skill-tag">MCP Servers</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Cloud & Infra</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Azure</span>
+        <span class="skill-tag">GCP</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Kubernetes</span>
+        <span class="skill-tag">Terraform</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Databases</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">DuckDB</span>
+        <span class="skill-tag">SQLite</span>
+        <span class="skill-tag">Postgres FDW</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>DevOps & Testing</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">GitHub Actions</span>
+        <span class="skill-tag">CI/CD</span>
+        <span class="skill-tag">E2E Testing</span>
+        <span class="skill-tag">Nix</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>AI & Tooling</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">MCP</span>
+        <span class="skill-tag">AI SDKs</span>
+        <span class="skill-tag">Claude Code</span>
+        <span class="skill-tag">Copilot</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Open Source Projects -->
+<div class="section">
+  <div class="section-title">Open Source Projects</div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3><a href="https://github.com/turbot/steampipe" target="_blank">Steampipe</a></h3>
+      <div class="stars">7,700+ stars</div>
+      <p>Zero-ETL platform to query live cloud APIs using SQL. Built on embedded PostgreSQL with custom Foreign Data Wrappers and gRPC-based plugin architecture.</p>
+      <div class="tech">
+        <span>Go</span>
+        <span>gRPC</span>
+        <span>PostgreSQL</span>
+        <span>FDW</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3><a href="https://github.com/turbot/steampipe-plugin-sdk" target="_blank">Steampipe Plugin SDK</a></h3>
+      <div class="stars">Core Architect</div>
+      <p>Go SDK enabling 150+ plugins and 2,000+ queryable tables. Handles pagination, rate limiting, caching, and multi-region fan-out.</p>
+      <div class="tech">
+        <span>Go</span>
+        <span>gRPC</span>
+        <span>SDK Design</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3><a href="https://github.com/turbot/powerpipe" target="_blank">Powerpipe</a></h3>
+      <div class="stars">Contributor</div>
+      <p>Cloud Security Posture Management tool. Compliance benchmarks for CIS, NIST, SOC2, and more.</p>
+      <div class="tech">
+        <span>Go</span>
+        <span>CSPM</span>
+        <span>Compliance</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3><a href="https://github.com/turbot/tailpipe" target="_blank">Tailpipe</a></h3>
+      <div class="stars">Contributor</div>
+      <p>Cloud log analysis and SIEM tool powered by DuckDB for high-performance security event querying.</p>
+      <div class="tech">
+        <span>Go</span>
+        <span>DuckDB</span>
+        <span>SIEM</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Experience -->
+<div class="section">
+  <div class="section-title">Experience</div>
+
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">Senior Software Engineer</span>
+      <span class="job-period">2019 &ndash; Present</span>
+    </div>
+    <div class="job-company">Turbot HQ India Pvt. Ltd.</div>
+    <ul>
+      <li>Led backend development in Golang for a multi-tenant cloud governance SaaS platform serving enterprise customers across AWS, Azure, and GCP.</li>
+      <li>Designed the Steampipe plugin architecture (Go SDK + gRPC), enabling 150+ plugins and 2,000+ queryable cloud resource tables.</li>
+      <li>Built Postgres FDW and SQLite extensions; implemented DuckDB and DuckLake data backends for high-performance zero-ETL access.</li>
+      <li>Designed and developed MCP servers enabling secure, real-time LLM access to cloud governance data.</li>
+      <li>Built AI-powered prevention features using TypeScript and AI SDKs, converting policy signals into proactive guardrails.</li>
+      <li>Drove CI/CD pipeline optimization with CGO cross-compilation and automated packaging, reducing deployment cycles by ~35%.</li>
+      <li>Mentored junior and mid-level engineers on Go best practices and system design.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">Software Engineer</span>
+      <span class="job-period">2017 &ndash; 2019</span>
+    </div>
+    <div class="job-company">Riaxe Systems Pvt. Ltd.</div>
+    <ul>
+      <li>Developed hybrid mobile application backends and third-party integrations using Node.js.</li>
+      <li>Implemented OAuth 2.0 authentication flows and payment gateway integrations.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-header">
+      <span class="job-title">Junior Java Developer</span>
+      <span class="job-period">2016 &ndash; 2017</span>
+    </div>
+    <div class="job-company">Rainmaker Group</div>
+    <ul>
+      <li>Built an appointment scheduling system using Java and Spring MVC with RESTful APIs.</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+
+<footer>
+  &copy; 2026 Partha Sarathi Behera &middot; Built with care
+</footer>
+
+</body>
+</html>
