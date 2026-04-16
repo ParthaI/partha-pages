@@ -425,6 +425,94 @@
     border-radius: 4px;
   }
 
+  /* === ARTICLES === */
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .article-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    background: var(--bg);
+    transition: all 0.25s;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .article-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), #60a5fa);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .article-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.08);
+    transform: translateY(-3px);
+  }
+  .article-card:hover::after { transform: scaleX(1); }
+  .article-card-type {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .article-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .article-card h3 a { color: var(--text); }
+  .article-card h3 a:hover { color: var(--accent); }
+  .article-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    flex-grow: 1;
+  }
+  .article-card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .article-card-footer span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: var(--bg-alt);
+    color: var(--text-muted);
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+  .article-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 14px;
+  }
+  .article-link svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s;
+  }
+  .article-card:hover .article-link svg { transform: translateX(3px); }
+
   /* === EXPERIENCE === */
   .timeline {
     position: relative;
@@ -585,6 +673,7 @@
     .about-grid { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: 1fr 1fr; }
     .projects-grid { grid-template-columns: 1fr; }
+    .articles-grid { grid-template-columns: 1fr; }
     section { padding: 56px 0; }
     .nav-links { gap: 16px; }
     .nav-links a { font-size: 0.78rem; }
@@ -613,6 +702,7 @@
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a href="#articles">Articles</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </div>
@@ -846,6 +936,65 @@
         <span>Go</span><span>DuckDB</span><span>SIEM</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Articles -->
+<section id="articles">
+  <div class="section-header">
+    <div class="section-label">Technical Writing</div>
+    <div class="section-title">Articles &amp; Deep Dives</div>
+  </div>
+  <div class="articles-grid">
+
+    <div class="article-card">
+      <div class="article-card-type">Architecture</div>
+      <h3><a href="https://parthai.github.io/go-grpc-http/architecture-diagram.html" target="_blank">E-Commerce Microservices Architecture</a></h3>
+      <p>Complete system architecture for an order management platform built with Go microservices, gRPC, event sourcing, and CQRS patterns in a containerized environment.</p>
+      <div class="article-card-footer">
+        <span>Go</span><span>gRPC</span><span>CQRS</span><span>Event Sourcing</span><span>Docker</span>
+      </div>
+      <a href="https://parthai.github.io/go-grpc-http/architecture-diagram.html" target="_blank" class="article-link">
+        Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="article-card">
+      <div class="article-card-type">Architecture v2</div>
+      <h3><a href="https://parthai.github.io/go-grpc-http/architecture-v2.html" target="_blank">Advanced Microservices with NATS &amp; RabbitMQ</a></h3>
+      <p>Comprehensive e-commerce system with gRPC communication, event sourcing with CQRS, and multiple databases coordinated through NATS and RabbitMQ message brokers.</p>
+      <div class="article-card-footer">
+        <span>Go</span><span>NATS</span><span>RabbitMQ</span><span>PostgreSQL</span><span>gRPC</span>
+      </div>
+      <a href="https://parthai.github.io/go-grpc-http/architecture-v2.html" target="_blank" class="article-link">
+        Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="article-card">
+      <div class="article-card-type">Deep Dive</div>
+      <h3><a href="https://parthai.github.io/go-grpc-http/goroutines_deep_dive.html" target="_blank">Go Goroutines &mdash; 78 Questions Deep Dive</a></h3>
+      <p>Comprehensive guide covering goroutines through 78 questions spanning 9 sections, from fundamentals to advanced patterns, with runnable code examples and production-grade concurrency patterns.</p>
+      <div class="article-card-footer">
+        <span>Go</span><span>Goroutines</span><span>Concurrency</span><span>Patterns</span>
+      </div>
+      <a href="https://parthai.github.io/go-grpc-http/goroutines_deep_dive.html" target="_blank" class="article-link">
+        Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="article-card">
+      <div class="article-card-type">Comparison</div>
+      <h3><a href="https://parthai.github.io/go-grpc-http/messaging_systems_comparison.html" target="_blank">RabbitMQ vs MQTT vs NATS &mdash; Broker Comparison</a></h3>
+      <p>In-depth comparison of three message brokers highlighting their architectures, performance characteristics, and ideal use cases for different application scenarios.</p>
+      <div class="article-card-footer">
+        <span>RabbitMQ</span><span>MQTT</span><span>NATS</span><span>Messaging</span>
+      </div>
+      <a href="https://parthai.github.io/go-grpc-http/messaging_systems_comparison.html" target="_blank" class="article-link">
+        Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+
   </div>
 </section>
 
