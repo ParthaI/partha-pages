@@ -226,13 +226,74 @@
   }
 
   /* === ABOUT === */
-  .about-text {
-    font-size: 1.1rem;
+  .about-intro {
+    font-size: 1.15rem;
     line-height: 1.9;
     color: var(--text-muted);
     max-width: 780px;
+    margin-bottom: 40px;
   }
-  .about-text strong { color: var(--text); font-weight: 600; }
+  .about-intro strong { color: var(--text); font-weight: 600; }
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .about-card {
+    padding: 24px 28px;
+    background: var(--bg-alt);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    position: relative;
+    transition: all 0.25s;
+    overflow: hidden;
+  }
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 4px 0 0 4px;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .about-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 6px 24px rgba(37, 99, 235, 0.08);
+    transform: translateY(-2px);
+  }
+  .about-card:hover::before { opacity: 1; }
+  .about-card-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  .about-card-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--accent);
+  }
+  .about-card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.2px;
+  }
+  .about-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .about-card p strong { color: var(--text); font-weight: 600; }
 
   /* === SKILLS === */
   .skills-grid {
@@ -521,6 +582,7 @@
     .hero .tagline { font-size: 1rem; }
     .stats-inner { grid-template-columns: repeat(2, 1fr); }
     .stat { border-bottom: 1px solid var(--border); }
+    .about-grid { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: 1fr 1fr; }
     .projects-grid { grid-template-columns: 1fr; }
     section { padding: 56px 0; }
@@ -610,14 +672,42 @@
     <div class="section-label">Introduction</div>
     <div class="section-title">About Me</div>
   </div>
-  <div class="about-text">
-    Senior Software Engineer with <strong>9+ years of experience</strong> building high-scalability
-    Golang-based SaaS platforms, <strong>microservices architectures</strong>, and cloud-native developer
-    tooling. Core contributor to the <strong>Steampipe open-source ecosystem</strong> &mdash; a zero-ETL
-    platform that lets you query live cloud APIs using SQL. I designed the plugin architecture
-    powering 150+ plugins and 2,000+ cloud resource tables. Deep expertise in <strong>Go, gRPC,
-    PostgreSQL</strong>, and multi-cloud API design across AWS, Azure, and GCP. Recently building
-    <strong>AI-powered governance features</strong> including MCP servers and proactive guardrails.
+  <div class="about-intro">
+    Senior Software Engineer with <strong>9+ years of experience</strong>, primarily focused on
+    <strong>Golang</strong> and backend systems. For the last <strong>6 years</strong> at
+    <strong>Turbot</strong>, building a cloud governance platform that gives enterprises
+    <strong>visibility, compliance, and control</strong> over their multi-cloud infrastructure
+    across AWS, Azure, and GCP.
+  </div>
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 2.5 2.5L16 9"/></svg>
+      </div>
+      <h3>Steampipe &amp; Plugin Architecture</h3>
+      <p>Core contributor to <strong>Steampipe</strong> (7,700+ GitHub stars) &mdash; a zero-ETL platform that lets you query live cloud APIs using SQL, powered by embedded PostgreSQL, a custom Foreign Data Wrapper, and gRPC-based plugins. Designed and built the <strong>plugin architecture</strong> using the Steampipe Plugin SDK in Go, powering <strong>150+ plugins</strong> and <strong>2,000+ queryable tables</strong>.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+      </div>
+      <h3>Cloud Governance Products</h3>
+      <p>Contributed to <strong>Powerpipe</strong> for cloud security posture management and compliance benchmarks (CIS, NIST, SOC2), <strong>Tailpipe</strong> for cloud log analysis and SIEM powered by DuckDB, and built data backends using <strong>DuckDB</strong> and <strong>DuckLake</strong> for high-performance query patterns.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4c0 2.8 2.2 4.4 3.2 6.2.6 1 .8 2 .8 2.8h0c0-.8.2-1.8.8-2.8C13.8 10.4 16 8.8 16 6a4 4 0 0 0-4-4z"/><path d="M12 15v7"/><path d="M8 22h8"/></svg>
+      </div>
+      <h3>AI-Powered Features</h3>
+      <p>Designed and developed <strong>MCP servers</strong> that give LLM assistants real-time access to governance data. Built an <strong>AI-powered prevention feature</strong> using TypeScript and AI SDKs that converts policy signals into proactive guardrails &mdash; shifting from detection to prevention.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+      <h3>CI/CD &amp; Engineering Practices</h3>
+      <p>Drove <strong>CI/CD pipeline optimization</strong> with CGO cross-compilation and automated packaging (Homebrew, yum, apt) across Linux, macOS, and Windows &mdash; reducing deployment cycles by <strong>~35%</strong>. Built Terraform-based E2E testing frameworks and mentor engineers on Go best practices and system design.</p>
+    </div>
   </div>
 </section>
 
